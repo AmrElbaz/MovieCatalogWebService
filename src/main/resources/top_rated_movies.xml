@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+    <movie>
+        <title>The Shawshank Redemption</title>
+        <rating>9.3</rating>
+        <year>1994</year>
+        <genre>Drama</genre>
+    </movie>
+    <movie>
+        <title>The Godfather</title>
+        <rating>9.2</rating>
+        <year>1972</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>The Dark Knight</title>
+        <rating>9.0</rating>
+        <year>2008</year>
+        <genre>Action</genre>
+    </movie>
+    <movie>
+        <title>Pulp Fiction</title>
+        <rating>8.9</rating>
+        <year>1994</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>Schindler's List</title>
+        <rating>8.9</rating>
+        <year>1993</year>
+        <genre>Biography</genre>
+    </movie>
+    <movie>
+        <title>Forrest Gump</title>
+        <rating>8.8</rating>
+        <year>1994</year>
+        <genre>Drama</genre>
+    </movie>
+    <movie>
+        <title>The Matrix</title>
+        <rating>8.7</rating>
+        <year>1999</year>
+        <genre>Action</genre>
+    </movie>
+    <movie>
+        <title>The Silence of the Lambs</title>
+        <rating>8.6</rating>
+        <year>1991</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>Gladiator</title>
+        <rating>8.5</rating>
+        <year>2000</year>
+        <genre>Action</genre>
+    </movie>
+    <movie>
+        <title>Braveheart</title>
+        <rating>8.3</rating>
+        <year>1995</year>
+        <genre>Biography</genre>
+    </movie>
+    <movie>
+        <title>The Departed</title>
+        <rating>8.5</rating>
+        <year>2006</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>Inception</title>
+        <rating>8.8</rating>
+        <year>2010</year>
+        <genre>Action</genre>
+    </movie>
+    <movie>
+        <title>The Green Mile</title>
+        <rating>8.6</rating>
+        <year>1999</year>
+        <genre>Drama</genre>
+    </movie>
+    <movie>
+        <title>The Pianist</title>
+        <rating>8.5</rating>
+        <year>2002</year>
+        <genre>Biography</genre>
+    </movie>
+    <movie>
+        <title>Goodfellas</title>
+        <rating>8.7</rating>
+        <year>1990</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>Saving Private Ryan</title>
+        <rating>8.6</rating>
+        <year>1998</year>
+        <genre>Action</genre>
+    </movie>
+    <movie>
+        <title>A Beautiful Mind</title>
+        <rating>8.2</rating>
+        <year>2001</year>
+        <genre>Biography</genre>
+    </movie>
+    <movie>
+        <title>The Shawshank Redemption</title>
+        <rating>9.3</rating>
+        <year>1994</year>
+        <genre>Drama</genre>
+    </movie>
+    <movie>
+        <title>The Godfather: Part II</title>
+        <rating>9.0</rating>
+        <year>1974</year>
+        <genre>Crime</genre>
+    </movie>
+    <movie>
+        <title>The Lord of the Rings: The Return of the King</title>
+        <rating>8.9</rating>
+        <year>2003</year>
+        <genre>Action</genre>
+    </movie>
+</movies>
