@@ -43,6 +43,7 @@ public class TopRatedMoviesHandler extends DefaultHandler {
             inTitleElement = false;
         } else if ("movie".equals(qName) && currentMovie != null) {
             topRatedMovies.add(currentMovie);
+            currentMovie = null;  // Reset currentMovie for the next iteration
             moviesCount++;
         }
     }
