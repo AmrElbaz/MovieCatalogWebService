@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<movies>
+    <movie>
+        <title>Inception</title>
+        <details>Details for Inception...</details>
+    </movie>
+    <!-- Add more movie entries as needed -->
+</movies>
