@@ -1,8 +1,12 @@
-package eg.gov.iti.jets.webservices.impl;
+package eg.gov.iti.jets.webservices.moviecatalogWS;
 
-import eg.gov.iti.jets.webservices.MovieCatalog;
-import eg.gov.iti.jets.handler.TopRatedMoviesHandler;
-import eg.gov.iti.jets.model.Movie;
+import eg.gov.iti.jets.webservices.moviecatalogWS.exception.GenericException;
+import eg.gov.iti.jets.webservices.moviecatalogWS.exception.InvalidNumberOfMoviesException;
+import eg.gov.iti.jets.webservices.moviecatalogWS.exception.TitleNotFoundException;
+import eg.gov.iti.jets.webservices.moviecatalogWS.MovieCatalog;
+//import eg.gov.iti.jets.webservices.moviecatalogWS.handler.TopRatedMoviesHandler;
+import eg.gov.iti.jets.webservices.moviecatalogWS.handler.TopRatedMoviesHandler;
+import eg.gov.iti.jets.webservices.moviecatalogWS.model.Movie;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 import org.w3c.dom.Document;
@@ -17,30 +21,36 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-@WebService(endpointInterface = "eg.gov.iti.jets.webservices.MovieCatalog")
+@WebService(endpointInterface = "eg.gov.iti.jets.webservices.moviecatalogWS.MovieCatalog")
 public class MovieCatalogImpl implements MovieCatalog {
     private static final String MOVIE_DETAILS_XML_FILE = "/movie_details.xml";
     private static final String TOP_RATED_MOVIES_XML_FILE = "/top_rated_movies.xml";
     private static final int MAX_ALLOWED_MOVIES = 20;
 
     @Override
-    public String getMovieDetails(@WebParam(name = "title") String title) {
+    public String getMovieDetails(@WebParam(name = "title") String title) throws TitleNotFoundException, GenericException {
         // Retrieve movie details from XML using DOM (Simplified for illustration)
-        return retrieveMovieDetailsFromXMLUsingDOM(title);
+        String movie = retrieveMovieDetailsFromXMLUsingDOM(title);
+        if(movie == null || movie.trim().length() <= 0) {
+            throw new TitleNotFoundException("Movie details not found for: " + title);
+        }
+
+        return movie;
     }
 
     @Override
-    public List<Movie> getTopRatedMovies(int numberOfMovies) {
+    public List<Movie> getTopRatedMovies(int numberOfMovies) throws InvalidNumberOfMoviesException, GenericException {
         if (numberOfMovies <= 0 || numberOfMovies > MAX_ALLOWED_MOVIES) {
-            throw new IllegalArgumentException(String.format("Number of movies must be greater than zero and less than %s", MAX_ALLOWED_MOVIES));
+            throw new InvalidNumberOfMoviesException(String.format("Number of movies must be greater than zero and less than %s", MAX_ALLOWED_MOVIES));
         }
 
         return retrieveTopRatedMoviesFromXMLUsingSAX(numberOfMovies);
+//        return null;
     }
 
 
     // Helper method to retrieve movie details from XML using DOM
-    private String retrieveMovieDetailsFromXMLUsingDOM(String title) {
+    private String retrieveMovieDetailsFromXMLUsingDOM(String title) throws GenericException {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -60,19 +70,16 @@ public class MovieCatalogImpl implements MovieCatalog {
             }
 
             // Movie not found
-            return "Movie details not found for: " + title;
-
-        } catch (ParserConfigurationException | org.xml.sax.SAXException | java.io.IOException e) {
+            return null;
+        } catch (ParserConfigurationException | org.xml.sax.SAXException | java.io.IOException| URISyntaxException e) {
             e.printStackTrace();
-            return "Error retrieving movie details.";
-        } catch (URISyntaxException e) {
-            return "Error retrieving movie details.";
+            throw new GenericException("Error retrieving movie details.");
         }
     }
 
-    private List<Movie> retrieveTopRatedMoviesFromXMLUsingSAX(int numberOfMovies) {
+    private List<Movie> retrieveTopRatedMoviesFromXMLUsingSAX(int numberOfMovies) throws InvalidNumberOfMoviesException, GenericException {
         if (numberOfMovies <= 0 || numberOfMovies > MAX_ALLOWED_MOVIES) {
-            throw new IllegalArgumentException(String.format("Number of movies must be greater than zero and less than %s", MAX_ALLOWED_MOVIES));
+            throw new InvalidNumberOfMoviesException(String.format("Number of movies must be greater than zero and less than %s", MAX_ALLOWED_MOVIES));
         }
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -85,12 +92,10 @@ public class MovieCatalogImpl implements MovieCatalog {
 
             return handler.getTopRatedMovies();
 
-        } catch (ParserConfigurationException | SAXException | IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException | URISyntaxException e) {
             e.printStackTrace();
-            // Handle the exception or return an empty list in case of an error
-            return new ArrayList<>();
-        } catch (URISyntaxException e) {
-            return new ArrayList<>();
+            throw new GenericException("Error retrieving top rated movies.");
+
         }
     }
 

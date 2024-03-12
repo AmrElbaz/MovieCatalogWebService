@@ -10,7 +10,7 @@
     </listener>
 
     <servlet>
-        <servlet-name>MovieCatalogWebService</servlet-name>
+        <servlet-name>MovieCatalogWS</servlet-name>
         <servlet-class>
             com.sun.xml.ws.transport.http.servlet.WSServlet
         </servlet-class>
@@ -18,7 +18,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MovieCatalogWebService</servlet-name>
+        <servlet-name>MovieCatalogWS</servlet-name>
         <url-pattern>/ws/movie</url-pattern>
     </servlet-mapping>
 </web-app>

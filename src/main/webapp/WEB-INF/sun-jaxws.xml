@@ -1,6 +1,14 @@
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
             name="MovieCatalogWS"
-            implementation="eg.gov.iti.jets.webservices.impl.MovieCatalogImpl"
-            url-pattern="/ws/movie" />
+            implementation="eg.gov.iti.jets.webservices.moviecatalogWS.MovieCatalogImpl"
+            url-pattern="/ws/movie" >
+        <handler-chains xmlns="https://jakarta.ee/xml/ns/jakartaee">
+            <handler-chain>
+                <handler>
+                    <handler-class>eg.gov.iti.jets.webservices.moviecatalogWS.handler.CustomExceptionHandler</handler-class>
+                </handler>
+            </handler-chain>
+        </handler-chains>
+    </endpoint>
 </endpoints>

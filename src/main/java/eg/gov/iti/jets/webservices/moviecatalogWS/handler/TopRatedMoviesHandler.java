@@ -1,6 +1,6 @@
-package eg.gov.iti.jets.handler;
+package eg.gov.iti.jets.webservices.moviecatalogWS.handler;
 
-import eg.gov.iti.jets.model.Movie;
+import eg.gov.iti.jets.webservices.moviecatalogWS.model.Movie;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

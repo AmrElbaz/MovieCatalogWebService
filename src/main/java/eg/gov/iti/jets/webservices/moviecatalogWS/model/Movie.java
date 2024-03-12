@@ -1,4 +1,4 @@
-package eg.gov.iti.jets.model;
+package eg.gov.iti.jets.webservices.moviecatalogWS.model;
 
 public class Movie {
     private String title;
